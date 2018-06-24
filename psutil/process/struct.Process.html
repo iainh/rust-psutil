@@ -1,190 +1,325 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `Process` struct in crate `psutil`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, Process">
-
-    <title>psutil::process::Process - Rust</title>
-
-    <link rel="stylesheet" type="text/css" href="../../main.css">
-
-    
-    
-</head>
-<body class="rustdoc">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <section class="sidebar">
-        
-        <p class='location'><a href='../index.html'>psutil</a>::<wbr><a href='index.html'>process</a></p><script>window.sidebarCurrent = {name: 'Process', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
-    </section>
-
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press 'S' to search, '?' for more options..."
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content struct">
-<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>psutil</a>::<wbr><a href='index.html'>process</a>::<wbr><a class='struct' href=''>Process</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-658' href='../../src/psutil/process.rs.html#182-313'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct Process {
-    pub pid: <a class='type' href='../../psutil/type.PID.html' title='psutil::PID'>PID</a>,
-    pub comm: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>,
-    pub state: <a class='enum' href='../../psutil/process/enum.State.html' title='psutil::process::State'>State</a>,
-    pub ppid: <a class='type' href='../../psutil/type.PID.html' title='psutil::PID'>PID</a>,
-    pub pgrp: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>,
-    pub session: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>,
-    pub tty_nr: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>,
-    pub tpgid: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>,
-    pub flags: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>,
-    pub minflt: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>,
-    pub cminflt: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>,
-    pub majflt: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>,
-    pub cmajflt: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>,
-    pub utime: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>,
-    pub stime: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>,
-    pub cutime: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>,
-    pub cstime: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>,
-    pub priority: <a href='http://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>,
-    pub nice: <a href='http://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>,
-    pub num_threads: <a href='http://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>,
-    pub starttime: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>,
-    pub vsize: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>,
-    pub rss: <a href='http://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>,
-    pub rsslim: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>,
-    pub wchan: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>,
-    pub exit_signal: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>,
-    pub processor: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>,
-    pub rt_priority: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>,
-    pub policy: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>,
-    pub delayacct_blkio_ticks: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>,
-    pub guest_time: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>,
-    pub cguest_time: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>,
-    pub exit_code: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>,
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `Process` struct in crate `psutil`."><meta name="keywords" content="rust, rustlang, rust-lang, Process"><title>psutil::process::Process - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc struct"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><p class='location'>Struct Process</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#fields">Fields</a><div class="sidebar-links"><a href="#structfield.pid">pid</a><a href="#structfield.uid">uid</a><a href="#structfield.gid">gid</a><a href="#structfield.comm">comm</a><a href="#structfield.state">state</a><a href="#structfield.ppid">ppid</a><a href="#structfield.pgrp">pgrp</a><a href="#structfield.session">session</a><a href="#structfield.tty_nr">tty_nr</a><a href="#structfield.tpgid">tpgid</a><a href="#structfield.flags">flags</a><a href="#structfield.minflt">minflt</a><a href="#structfield.cminflt">cminflt</a><a href="#structfield.majflt">majflt</a><a href="#structfield.cmajflt">cmajflt</a><a href="#structfield.utime">utime</a><a href="#structfield.utime_ticks">utime_ticks</a><a href="#structfield.stime">stime</a><a href="#structfield.stime_ticks">stime_ticks</a><a href="#structfield.cutime">cutime</a><a href="#structfield.cutime_ticks">cutime_ticks</a><a href="#structfield.cstime">cstime</a><a href="#structfield.cstime_ticks">cstime_ticks</a><a href="#structfield.priority">priority</a><a href="#structfield.nice">nice</a><a href="#structfield.num_threads">num_threads</a><a href="#structfield.starttime">starttime</a><a href="#structfield.starttime_ticks">starttime_ticks</a><a href="#structfield.vsize">vsize</a><a href="#structfield.rss">rss</a><a href="#structfield.rsslim">rsslim</a><a href="#structfield.wchan">wchan</a><a href="#structfield.exit_signal">exit_signal</a><a href="#structfield.processor">processor</a><a href="#structfield.rt_priority">rt_priority</a><a href="#structfield.policy">policy</a><a href="#structfield.delayacct_blkio">delayacct_blkio</a><a href="#structfield.delayacct_blkio_ticks">delayacct_blkio_ticks</a><a href="#structfield.guest_time">guest_time</a><a href="#structfield.guest_time_ticks">guest_time_ticks</a><a href="#structfield.cguest_time">cguest_time</a><a href="#structfield.cguest_time_ticks">cguest_time_ticks</a><a href="#structfield.exit_code">exit_code</a></div><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.new">new</a><a href="#method.from_pidfile">from_pidfile</a><a href="#method.is_alive">is_alive</a><a href="#method.cmdline_vec">cmdline_vec</a><a href="#method.cmdline">cmdline</a><a href="#method.cwd">cwd</a><a href="#method.exe">exe</a><a href="#method.environ">environ</a><a href="#method.memory">memory</a><a href="#method.open_fds">open_fds</a><a href="#method.kill">kill</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Clone">Clone</a><a href="#impl-Debug">Debug</a><a href="#impl-PartialEq">PartialEq</a></div><a class="sidebar-title" href="#synthetic-implementations">Auto Trait Implementations</a><div class="sidebar-links"><a href="#impl-Send">Send</a><a href="#impl-Sync">Sync</a></div></div><p class='location'><a href='../index.html'>psutil</a>::<wbr><a href='index.html'>process</a></p><script>window.sidebarCurrent = {name: 'Process', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>psutil</a>::<wbr><a href='index.html'>process</a>::<wbr><a class="struct" href=''>Process</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/psutil/process.rs.html#213-372' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct Process {
+    pub pid: <a class="type" href="../../psutil/type.PID.html" title="type psutil::PID">PID</a>,
+    pub uid: <a class="type" href="../../psutil/type.UID.html" title="type psutil::UID">UID</a>,
+    pub gid: <a class="type" href="../../psutil/type.GID.html" title="type psutil::GID">GID</a>,
+    pub comm: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
+    pub state: <a class="enum" href="../../psutil/process/enum.State.html" title="enum psutil::process::State">State</a>,
+    pub ppid: <a class="type" href="../../psutil/type.PID.html" title="type psutil::PID">PID</a>,
+    pub pgrp: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
+    pub session: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
+    pub tty_nr: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
+    pub tpgid: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
+    pub flags: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub minflt: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    pub cminflt: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    pub majflt: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    pub cmajflt: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    pub utime: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+    pub utime_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    pub stime: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+    pub stime_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    pub cutime: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+    pub cutime_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
+    pub cstime: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+    pub cstime_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
+    pub priority: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
+    pub nice: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
+    pub num_threads: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
+    pub starttime: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+    pub starttime_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    pub vsize: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    pub rss: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
+    pub rsslim: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    pub wchan: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    pub exit_signal: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
+    pub processor: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
+    pub rt_priority: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub policy: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub delayacct_blkio: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+    pub delayacct_blkio_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    pub guest_time: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+    pub guest_time_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    pub cguest_time: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+    pub cguest_time_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
+    pub exit_code: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
     // some fields omitted
-}</pre><div class='docblock'><p>Information about a process gathered from <code>/proc/[pid]/stat</code>.</p>
-
-<p><strong>IMPORTANT</strong>: See the module level notes for information on the types used
-by this struct, as some do not match those used by <code>/proc/[pid]/stat</code>.</p>
-</div><h2 class='fields'>Fields</h2>
-<table><tr><td id='structfield.pid'><a class='stability Unmarked' title='No stability level'></a><code>pid</code></td><td><div class='docblock'><p>PID of the process</p>
-</div></td></tr><tr><td id='structfield.comm'><a class='stability Unmarked' title='No stability level'></a><code>comm</code></td><td><div class='docblock'><p>Filename of the executable</p>
-</div></td></tr><tr><td id='structfield.state'><a class='stability Unmarked' title='No stability level'></a><code>state</code></td><td><div class='docblock'><p>State of the process as an enum</p>
-</div></td></tr><tr><td id='structfield.ppid'><a class='stability Unmarked' title='No stability level'></a><code>ppid</code></td><td><div class='docblock'><p>PID of the parent process</p>
-</div></td></tr><tr><td id='structfield.pgrp'><a class='stability Unmarked' title='No stability level'></a><code>pgrp</code></td><td><div class='docblock'><p>Process group ID</p>
-</div></td></tr><tr><td id='structfield.session'><a class='stability Unmarked' title='No stability level'></a><code>session</code></td><td><div class='docblock'><p>Session ID</p>
-</div></td></tr><tr><td id='structfield.tty_nr'><a class='stability Unmarked' title='No stability level'></a><code>tty_nr</code></td><td><div class='docblock'><p>Controlling terminal of the process [TODO: Actually two numbers]</p>
-</div></td></tr><tr><td id='structfield.tpgid'><a class='stability Unmarked' title='No stability level'></a><code>tpgid</code></td><td><div class='docblock'><p>ID of the foreground group of the controlling terminal</p>
-</div></td></tr><tr><td id='structfield.flags'><a class='stability Unmarked' title='No stability level'></a><code>flags</code></td><td><div class='docblock'><p>Kernel flags for the process</p>
-</div></td></tr><tr><td id='structfield.minflt'><a class='stability Unmarked' title='No stability level'></a><code>minflt</code></td><td><div class='docblock'><p>Minor faults</p>
-</div></td></tr><tr><td id='structfield.cminflt'><a class='stability Unmarked' title='No stability level'></a><code>cminflt</code></td><td><div class='docblock'><p>Minor faults by child processes</p>
-</div></td></tr><tr><td id='structfield.majflt'><a class='stability Unmarked' title='No stability level'></a><code>majflt</code></td><td><div class='docblock'><p>Major faults</p>
-</div></td></tr><tr><td id='structfield.cmajflt'><a class='stability Unmarked' title='No stability level'></a><code>cmajflt</code></td><td><div class='docblock'><p>Major faults by child processes</p>
-</div></td></tr><tr><td id='structfield.utime'><a class='stability Unmarked' title='No stability level'></a><code>utime</code></td><td><div class='docblock'><p>Time scheduled in user mode (seconds)</p>
-</div></td></tr><tr><td id='structfield.stime'><a class='stability Unmarked' title='No stability level'></a><code>stime</code></td><td><div class='docblock'><p>Time scheduled in kernel mode (seconds)</p>
-</div></td></tr><tr><td id='structfield.cutime'><a class='stability Unmarked' title='No stability level'></a><code>cutime</code></td><td><div class='docblock'><p>Time waited-for child processes were scheduled in user mode (seconds)</p>
-</div></td></tr><tr><td id='structfield.cstime'><a class='stability Unmarked' title='No stability level'></a><code>cstime</code></td><td><div class='docblock'><p>Time waited-for child processes were scheduled in kernel mode (seconds)</p>
-</div></td></tr><tr><td id='structfield.priority'><a class='stability Unmarked' title='No stability level'></a><code>priority</code></td><td><div class='docblock'><p>Priority value (-100..-2 | 0..39)</p>
-</div></td></tr><tr><td id='structfield.nice'><a class='stability Unmarked' title='No stability level'></a><code>nice</code></td><td><div class='docblock'><p>Nice value (-20..19)</p>
-</div></td></tr><tr><td id='structfield.num_threads'><a class='stability Unmarked' title='No stability level'></a><code>num_threads</code></td><td><div class='docblock'><p>Number of threads in the process</p>
-</div></td></tr><tr><td id='structfield.starttime'><a class='stability Unmarked' title='No stability level'></a><code>starttime</code></td><td><div class='docblock'><p>Time the process was started after system boot (clock ticks)</p>
-</div></td></tr><tr><td id='structfield.vsize'><a class='stability Unmarked' title='No stability level'></a><code>vsize</code></td><td><div class='docblock'><p>Virtual memory size in bytes</p>
-</div></td></tr><tr><td id='structfield.rss'><a class='stability Unmarked' title='No stability level'></a><code>rss</code></td><td><div class='docblock'><p>Resident Set Size (pages) [TODO: Calculate size in bytes]</p>
-</div></td></tr><tr><td id='structfield.rsslim'><a class='stability Unmarked' title='No stability level'></a><code>rsslim</code></td><td><div class='docblock'><p>Current soft limit on process RSS (bytes)</p>
-</div></td></tr><tr><td id='structfield.wchan'><a class='stability Unmarked' title='No stability level'></a><code>wchan</code></td><td><div class='docblock'><p>Channel the process is waiting on (address of a system call)</p>
-</div></td></tr><tr><td id='structfield.exit_signal'><a class='stability Unmarked' title='No stability level'></a><code>exit_signal</code></td><td><div class='docblock'><p>Signal sent to parent when process dies</p>
-</div></td></tr><tr><td id='structfield.processor'><a class='stability Unmarked' title='No stability level'></a><code>processor</code></td><td><div class='docblock'><p>Number of the CPU the process was last executed on</p>
-</div></td></tr><tr><td id='structfield.rt_priority'><a class='stability Unmarked' title='No stability level'></a><code>rt_priority</code></td><td><div class='docblock'><p>Real-time scheduling priority (0 | 1..99)</p>
-</div></td></tr><tr><td id='structfield.policy'><a class='stability Unmarked' title='No stability level'></a><code>policy</code></td><td><div class='docblock'><p>Scheduling policy</p>
-</div></td></tr><tr><td id='structfield.delayacct_blkio_ticks'><a class='stability Unmarked' title='No stability level'></a><code>delayacct_blkio_ticks</code></td><td><div class='docblock'><p>Aggregated block I/O delays (clock ticks)</p>
-</div></td></tr><tr><td id='structfield.guest_time'><a class='stability Unmarked' title='No stability level'></a><code>guest_time</code></td><td><div class='docblock'><p>Guest time of the process (seconds)</p>
-</div></td></tr><tr><td id='structfield.cguest_time'><a class='stability Unmarked' title='No stability level'></a><code>cguest_time</code></td><td><div class='docblock'><p>Guest time of the process&#39;s children (seconds)</p>
-</div></td></tr><tr><td id='structfield.exit_code'><a class='stability Unmarked' title='No stability level'></a><code>exit_code</code></td><td><div class='docblock'><p>The thread&#39;s exit status</p>
-</div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../../psutil/process/struct.Process.html' title='psutil::process::Process'>Process</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(pid: <a class='type' href='../../psutil/type.PID.html' title='psutil::PID'>PID</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/std/io/error/type.Result.html' title='std::io::error::Result'>Result</a>&lt;<a class='struct' href='../../psutil/process/struct.Process.html' title='psutil::process::Process'>Process</a>&gt;</code></h4>
-<div class='docblock'><p>Attempts to read process information from <code>/proc/[pid]/stat</code>.</p>
-
-<p><code>/stat</code> is seperated by spaces and contains a trailing newline.</p>
-
-<p>This should return a psutil/process specific error type, so that  errors
-can be raised by <code>FromStr</code> too</p>
-</div><h4 id='method.from_pidfile' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.from_pidfile' class='fnname'>from_pidfile</a>(path: &amp;<a class='struct' href='http://doc.rust-lang.org/nightly/std/path/struct.Path.html' title='std::path::Path'>Path</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/std/io/error/type.Result.html' title='std::io::error::Result'>Result</a>&lt;<a class='struct' href='../../psutil/process/struct.Process.html' title='psutil::process::Process'>Process</a>&gt;</code></h4>
-<div class='docblock'><p>Create a Process by reading it&#39;s PID from a pidfile.</p>
-</div><h4 id='method.is_alive' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.is_alive' class='fnname'>is_alive</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
-<div class='docblock'><p>Return <code>true</code> if the process was alive at the time it was read.</p>
-</div><h4 id='method.cmdline_vec' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.cmdline_vec' class='fnname'>cmdline_vec</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/std/io/error/type.Result.html' title='std::io::error::Result'>Result</a>&lt;<a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;&gt;</code></h4>
-<div class='docblock'><p>Read <code>/proc/[pid]/cmdline</code> as a vector.</p>
-
+}</pre></div><div class='docblock'><p>Information about a process gathered from <code>/proc/[pid]/stat</code>.</p>
+<p>More information about specific fields can be found in <a href="http://man7.org/linux/man-pages/man5/proc.5.html">proc(5)</a>.</p>
+<h1 id="field-sizes" class="section-header"><a href="#field-sizes">Field sizes</a></h1>
+<p>The manual pages for <code>proc</code> define integer sizes using <code>scanf(3)</code> format specifiers, which parse
+to implementation specific sizes. This is obviously a terrible idea, and so this code makes some
+assumptions about the sizes of those specifiers.</p>
+<p>These assumptions are backed up by <code>libc::types::os::arch::posix88::pid_t</code>, which declares PIDs
+to be signed 32 bit integers. <code>proc(5)</code> declares that PIDs use the <code>%d</code> format specifier.</p>
+<ul>
+<li><code>%d</code> / <code>%u</code> - 32 bit signed and unsigned integers</li>
+<li><code>%ld</code> / <code>%lu</code> - 64 bit signed and unsigned integers</li>
+</ul>
+<p>Rust currently has no support for 128 bit integers (<a href="https://github.com/rust-lang/rfcs/issues/521">rfc521</a>) so <code>%llu</code> (used by the <code>starttime</code>
+and <code>delayacct_blkio_ticks</code> fields) is is instead represented by a 64 bit integer, with the hope
+that doesn't break.</p>
+<h3 id="cpu-time-fields-and-clock-ticks" class="section-header"><a href="#cpu-time-fields-and-clock-ticks">CPU time fields and clock ticks</a></h3>
+<p>The CPU time fields are very strange. Inside the Linux kernel they each use the same type
+(<a href="https://github.com/torvalds/linux/blob/master/fs/proc/array.c#L361">array.c:361</a>) but when printed use different types (<a href="https://github.com/torvalds/linux/blob/master/fs/proc/array.c#L456">array.c:456</a>) - the fields <code>utime</code>,
+<code>stime</code> and <code>gtime</code> are unsigned integers, whereas <code>cutime</code>, <code>cstime</code> and <code>cgtime</code> are signed
+integers.</p>
+<p>These values are all returned as a number of clock ticks, which can be divided by
+<code>sysconf(_SC_CLK_TCK)</code> to get a value in seconds. The <code>Process</code> struct does this conversion
+automatically, and all CPU time fields use the <code>f64</code> type. A corresponding <code>_ticks</code> field  (e.g.
+<code>utime_ticks</code> gives the raw number of ticks as found in <code>/proc</code>.</p>
+<h1 id="unmaintained-fields" class="section-header"><a href="#unmaintained-fields">Unmaintained fields</a></h1>
+<p>The <code>itrealvalue</code> [20], <code>nswap</code> [35] and <code>cnswap</code> [36] fields are not maintained, and in some
+cases are hardcoded to 0 in the kernel. The <code>signal</code> [30], <code>blocked</code> [31], <code>sigignore</code> [32] and
+<code>sigcatch</code> [33] fields are included as private fields, but <code>proc(5)</code> recommends the use of
+<code>/proc/[pid]/status</code> instead.</p>
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<pre class="rust rust-example-rendered">
+<span class="ident">psutil</span>::<span class="ident">process</span>::<span class="ident">Process</span>::<span class="ident">new</span>(<span class="ident">psutil</span>::<span class="ident">getpid</span>()).<span class="ident">unwrap</span>();</pre>
+</div><h2 id='fields' class='fields small-section-header'>
+                       Fields<a href='#fields' class='anchor'></a></h2><span id="structfield.pid" class="structfield small-section-header">
+                           <a href="#structfield.pid" class="anchor field"></a>
+                           <span id="pid.v" class='invisible'>
+                           <code>pid: <a class="type" href="../../psutil/type.PID.html" title="type psutil::PID">PID</a></code>
+                           </span></span><div class='docblock'><p>PID of the process.</p>
+</div><span id="structfield.uid" class="structfield small-section-header">
+                           <a href="#structfield.uid" class="anchor field"></a>
+                           <span id="uid.v" class='invisible'>
+                           <code>uid: <a class="type" href="../../psutil/type.UID.html" title="type psutil::UID">UID</a></code>
+                           </span></span><div class='docblock'><p>UID of the process.</p>
+</div><span id="structfield.gid" class="structfield small-section-header">
+                           <a href="#structfield.gid" class="anchor field"></a>
+                           <span id="gid.v" class='invisible'>
+                           <code>gid: <a class="type" href="../../psutil/type.GID.html" title="type psutil::GID">GID</a></code>
+                           </span></span><div class='docblock'><p>UID of the process.</p>
+</div><span id="structfield.comm" class="structfield small-section-header">
+                           <a href="#structfield.comm" class="anchor field"></a>
+                           <span id="comm.v" class='invisible'>
+                           <code>comm: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a></code>
+                           </span></span><div class='docblock'><p>Filename of the executable.</p>
+</div><span id="structfield.state" class="structfield small-section-header">
+                           <a href="#structfield.state" class="anchor field"></a>
+                           <span id="state.v" class='invisible'>
+                           <code>state: <a class="enum" href="../../psutil/process/enum.State.html" title="enum psutil::process::State">State</a></code>
+                           </span></span><div class='docblock'><p>State of the process as an enum.</p>
+</div><span id="structfield.ppid" class="structfield small-section-header">
+                           <a href="#structfield.ppid" class="anchor field"></a>
+                           <span id="ppid.v" class='invisible'>
+                           <code>ppid: <a class="type" href="../../psutil/type.PID.html" title="type psutil::PID">PID</a></code>
+                           </span></span><div class='docblock'><p>PID of the parent process.</p>
+</div><span id="structfield.pgrp" class="structfield small-section-header">
+                           <a href="#structfield.pgrp" class="anchor field"></a>
+                           <span id="pgrp.v" class='invisible'>
+                           <code>pgrp: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code>
+                           </span></span><div class='docblock'><p>Process group ID.</p>
+</div><span id="structfield.session" class="structfield small-section-header">
+                           <a href="#structfield.session" class="anchor field"></a>
+                           <span id="session.v" class='invisible'>
+                           <code>session: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code>
+                           </span></span><div class='docblock'><p>Session ID.</p>
+</div><span id="structfield.tty_nr" class="structfield small-section-header">
+                           <a href="#structfield.tty_nr" class="anchor field"></a>
+                           <span id="tty_nr.v" class='invisible'>
+                           <code>tty_nr: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code>
+                           </span></span><div class='docblock'><p>Controlling terminal of the process [TODO: Actually two numbers].</p>
+</div><span id="structfield.tpgid" class="structfield small-section-header">
+                           <a href="#structfield.tpgid" class="anchor field"></a>
+                           <span id="tpgid.v" class='invisible'>
+                           <code>tpgid: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code>
+                           </span></span><div class='docblock'><p>ID of the foreground group of the controlling terminal.</p>
+</div><span id="structfield.flags" class="structfield small-section-header">
+                           <a href="#structfield.flags" class="anchor field"></a>
+                           <span id="flags.v" class='invisible'>
+                           <code>flags: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><div class='docblock'><p>Kernel flags for the process.</p>
+</div><span id="structfield.minflt" class="structfield small-section-header">
+                           <a href="#structfield.minflt" class="anchor field"></a>
+                           <span id="minflt.v" class='invisible'>
+                           <code>minflt: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code>
+                           </span></span><div class='docblock'><p>Minor faults.</p>
+</div><span id="structfield.cminflt" class="structfield small-section-header">
+                           <a href="#structfield.cminflt" class="anchor field"></a>
+                           <span id="cminflt.v" class='invisible'>
+                           <code>cminflt: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code>
+                           </span></span><div class='docblock'><p>Minor faults by child processes.</p>
+</div><span id="structfield.majflt" class="structfield small-section-header">
+                           <a href="#structfield.majflt" class="anchor field"></a>
+                           <span id="majflt.v" class='invisible'>
+                           <code>majflt: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code>
+                           </span></span><div class='docblock'><p>Major faults.</p>
+</div><span id="structfield.cmajflt" class="structfield small-section-header">
+                           <a href="#structfield.cmajflt" class="anchor field"></a>
+                           <span id="cmajflt.v" class='invisible'>
+                           <code>cmajflt: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code>
+                           </span></span><div class='docblock'><p>Major faults by child processes.</p>
+</div><span id="structfield.utime" class="structfield small-section-header">
+                           <a href="#structfield.utime" class="anchor field"></a>
+                           <span id="utime.v" class='invisible'>
+                           <code>utime: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code>
+                           </span></span><div class='docblock'><p>Time scheduled in user mode (seconds).</p>
+</div><span id="structfield.utime_ticks" class="structfield small-section-header">
+                           <a href="#structfield.utime_ticks" class="anchor field"></a>
+                           <span id="utime_ticks.v" class='invisible'>
+                           <code>utime_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code>
+                           </span></span><div class='docblock'><p>Time scheduled in user mode (ticks).</p>
+</div><span id="structfield.stime" class="structfield small-section-header">
+                           <a href="#structfield.stime" class="anchor field"></a>
+                           <span id="stime.v" class='invisible'>
+                           <code>stime: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code>
+                           </span></span><div class='docblock'><p>Time scheduled in kernel mode (seconds).</p>
+</div><span id="structfield.stime_ticks" class="structfield small-section-header">
+                           <a href="#structfield.stime_ticks" class="anchor field"></a>
+                           <span id="stime_ticks.v" class='invisible'>
+                           <code>stime_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code>
+                           </span></span><div class='docblock'><p>Time scheduled in kernel mode (ticks).</p>
+</div><span id="structfield.cutime" class="structfield small-section-header">
+                           <a href="#structfield.cutime" class="anchor field"></a>
+                           <span id="cutime.v" class='invisible'>
+                           <code>cutime: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code>
+                           </span></span><div class='docblock'><p>Time waited-for child processes were scheduled in user mode (seconds).</p>
+</div><span id="structfield.cutime_ticks" class="structfield small-section-header">
+                           <a href="#structfield.cutime_ticks" class="anchor field"></a>
+                           <span id="cutime_ticks.v" class='invisible'>
+                           <code>cutime_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code>
+                           </span></span><div class='docblock'><p>Time waited-for child processes were scheduled in user mode (ticks).</p>
+</div><span id="structfield.cstime" class="structfield small-section-header">
+                           <a href="#structfield.cstime" class="anchor field"></a>
+                           <span id="cstime.v" class='invisible'>
+                           <code>cstime: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code>
+                           </span></span><div class='docblock'><p>Time waited-for child processes were scheduled in kernel mode (seconds).</p>
+</div><span id="structfield.cstime_ticks" class="structfield small-section-header">
+                           <a href="#structfield.cstime_ticks" class="anchor field"></a>
+                           <span id="cstime_ticks.v" class='invisible'>
+                           <code>cstime_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code>
+                           </span></span><div class='docblock'><p>Time waited-for child processes were scheduled in kernel mode (ticks).</p>
+</div><span id="structfield.priority" class="structfield small-section-header">
+                           <a href="#structfield.priority" class="anchor field"></a>
+                           <span id="priority.v" class='invisible'>
+                           <code>priority: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code>
+                           </span></span><div class='docblock'><p>Priority value (-100..-2 | 0..39).</p>
+</div><span id="structfield.nice" class="structfield small-section-header">
+                           <a href="#structfield.nice" class="anchor field"></a>
+                           <span id="nice.v" class='invisible'>
+                           <code>nice: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code>
+                           </span></span><div class='docblock'><p>Nice value (-20..19).</p>
+</div><span id="structfield.num_threads" class="structfield small-section-header">
+                           <a href="#structfield.num_threads" class="anchor field"></a>
+                           <span id="num_threads.v" class='invisible'>
+                           <code>num_threads: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code>
+                           </span></span><div class='docblock'><p>Number of threads in the process.</p>
+</div><span id="structfield.starttime" class="structfield small-section-header">
+                           <a href="#structfield.starttime" class="anchor field"></a>
+                           <span id="starttime.v" class='invisible'>
+                           <code>starttime: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code>
+                           </span></span><div class='docblock'><p>Time the process was started after system boot (seconds).</p>
+</div><span id="structfield.starttime_ticks" class="structfield small-section-header">
+                           <a href="#structfield.starttime_ticks" class="anchor field"></a>
+                           <span id="starttime_ticks.v" class='invisible'>
+                           <code>starttime_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code>
+                           </span></span><div class='docblock'><p>Time the process was started after system boot (ticks).</p>
+</div><span id="structfield.vsize" class="structfield small-section-header">
+                           <a href="#structfield.vsize" class="anchor field"></a>
+                           <span id="vsize.v" class='invisible'>
+                           <code>vsize: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code>
+                           </span></span><div class='docblock'><p>Virtual memory size in bytes.</p>
+</div><span id="structfield.rss" class="structfield small-section-header">
+                           <a href="#structfield.rss" class="anchor field"></a>
+                           <span id="rss.v" class='invisible'>
+                           <code>rss: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code>
+                           </span></span><div class='docblock'><p>Resident Set Size (bytes).</p>
+</div><span id="structfield.rsslim" class="structfield small-section-header">
+                           <a href="#structfield.rsslim" class="anchor field"></a>
+                           <span id="rsslim.v" class='invisible'>
+                           <code>rsslim: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code>
+                           </span></span><div class='docblock'><p>Current soft limit on process RSS (bytes).</p>
+</div><span id="structfield.wchan" class="structfield small-section-header">
+                           <a href="#structfield.wchan" class="anchor field"></a>
+                           <span id="wchan.v" class='invisible'>
+                           <code>wchan: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code>
+                           </span></span><div class='docblock'><p>Channel the process is waiting on (address of a system call).</p>
+</div><span id="structfield.exit_signal" class="structfield small-section-header">
+                           <a href="#structfield.exit_signal" class="anchor field"></a>
+                           <span id="exit_signal.v" class='invisible'>
+                           <code>exit_signal: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code>
+                           </span></span><div class='docblock'><p>Signal sent to parent when process dies.</p>
+</div><span id="structfield.processor" class="structfield small-section-header">
+                           <a href="#structfield.processor" class="anchor field"></a>
+                           <span id="processor.v" class='invisible'>
+                           <code>processor: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code>
+                           </span></span><div class='docblock'><p>Number of the CPU the process was last executed on.</p>
+</div><span id="structfield.rt_priority" class="structfield small-section-header">
+                           <a href="#structfield.rt_priority" class="anchor field"></a>
+                           <span id="rt_priority.v" class='invisible'>
+                           <code>rt_priority: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><div class='docblock'><p>Real-time scheduling priority (0 | 1..99).</p>
+</div><span id="structfield.policy" class="structfield small-section-header">
+                           <a href="#structfield.policy" class="anchor field"></a>
+                           <span id="policy.v" class='invisible'>
+                           <code>policy: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><div class='docblock'><p>Scheduling policy.</p>
+</div><span id="structfield.delayacct_blkio" class="structfield small-section-header">
+                           <a href="#structfield.delayacct_blkio" class="anchor field"></a>
+                           <span id="delayacct_blkio.v" class='invisible'>
+                           <code>delayacct_blkio: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code>
+                           </span></span><div class='docblock'><p>Aggregated block I/O delays (seconds).</p>
+</div><span id="structfield.delayacct_blkio_ticks" class="structfield small-section-header">
+                           <a href="#structfield.delayacct_blkio_ticks" class="anchor field"></a>
+                           <span id="delayacct_blkio_ticks.v" class='invisible'>
+                           <code>delayacct_blkio_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code>
+                           </span></span><div class='docblock'><p>Aggregated block I/O delays (ticks).</p>
+</div><span id="structfield.guest_time" class="structfield small-section-header">
+                           <a href="#structfield.guest_time" class="anchor field"></a>
+                           <span id="guest_time.v" class='invisible'>
+                           <code>guest_time: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code>
+                           </span></span><div class='docblock'><p>Guest time of the process (seconds).</p>
+</div><span id="structfield.guest_time_ticks" class="structfield small-section-header">
+                           <a href="#structfield.guest_time_ticks" class="anchor field"></a>
+                           <span id="guest_time_ticks.v" class='invisible'>
+                           <code>guest_time_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code>
+                           </span></span><div class='docblock'><p>Guest time of the process (ticks).</p>
+</div><span id="structfield.cguest_time" class="structfield small-section-header">
+                           <a href="#structfield.cguest_time" class="anchor field"></a>
+                           <span id="cguest_time.v" class='invisible'>
+                           <code>cguest_time: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code>
+                           </span></span><div class='docblock'><p>Guest time of the process's children (seconds).</p>
+</div><span id="structfield.cguest_time_ticks" class="structfield small-section-header">
+                           <a href="#structfield.cguest_time_ticks" class="anchor field"></a>
+                           <span id="cguest_time_ticks.v" class='invisible'>
+                           <code>cguest_time_ticks: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code>
+                           </span></span><div class='docblock'><p>Guest time of the process's children (ticks).</p>
+</div><span id="structfield.exit_code" class="structfield small-section-header">
+                           <a href="#structfield.exit_code" class="anchor field"></a>
+                           <span id="exit_code.v" class='invisible'>
+                           <code>exit_code: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code>
+                           </span></span><div class='docblock'><p>The thread's exit status.</p>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="struct" href="../../psutil/process/struct.Process.html" title="struct psutil::process::Process">Process</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#374-571' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new' class='fnname'>new</a>(pid: <a class="type" href="../../psutil/type.PID.html" title="type psutil::PID">PID</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="../../psutil/process/struct.Process.html" title="struct psutil::process::Process">Process</a>&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#379-384' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Attempts to read process information from <code>/proc/[pid]/stat</code>.</p>
+<p>Some additional metadata is read from the permissions on the <code>/proc/[pid]/</code>, which defines
+the process UID/GID. The format of <code>/proc/[pid]/stat</code> format is defined in proc(5).</p>
+</div><h4 id='method.from_pidfile' class="method"><span id='from_pidfile.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.from_pidfile' class='fnname'>from_pidfile</a>(path: &amp;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html" title="struct std::path::Path">Path</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="../../psutil/process/struct.Process.html" title="struct psutil::process::Process">Process</a>&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#477-479' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Create a Process by reading its PID from a pidfile.</p>
+</div><h4 id='method.is_alive' class="method"><span id='is_alive.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.is_alive' class='fnname'>is_alive</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#482-487' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Return <code>true</code> if the process was alive at the time it was read.</p>
+</div><h4 id='method.cmdline_vec' class="method"><span id='cmdline_vec.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.cmdline_vec' class='fnname'>cmdline_vec</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;&gt;&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#492-504' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Read <code>/proc/[pid]/cmdline</code> as a vector.</p>
 <p>Returns <code>Err</code> if <code>/proc/[pid]/cmdline</code> is empty.</p>
-</div><h4 id='method.cmdline' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.cmdline' class='fnname'>cmdline</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/std/io/error/type.Result.html' title='std::io::error::Result'>Result</a>&lt;<a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;</code></h4>
-<div class='docblock'><p>Return the result of <code>cmdline_vec</code> as a String.</p>
-</div><h4 id='method.memory' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.memory' class='fnname'>memory</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/std/io/error/type.Result.html' title='std::io::error::Result'>Result</a>&lt;<a class='struct' href='../../psutil/process/struct.Memory.html' title='psutil::process::Memory'>Memory</a>&gt;</code></h4>
-<div class='docblock'><p>Reads <code>/proc/[pid]/statm</code> into a struct.</p>
-</div><h4 id='method.kill' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.kill' class='fnname'>kill</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/std/io/error/type.Result.html' title='std::io::error::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
-<div class='docblock'><p>Send SIGKILL to the process.</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../psutil/process/struct.Process.html' title='psutil::process::Process'>Process</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
-</div></section>
-    <section id='search' class="content hidden"></section>
-
-    <section class="footer"></section>
-
-    <div id="help" class="hidden">
-        <div class="shortcuts">
-            <h1>Keyboard shortcuts</h1>
-            <dl>
-                <dt>?</dt>
-                <dd>Show this help dialog</dd>
-                <dt>S</dt>
-                <dd>Focus the search field</dd>
-                <dt>&larrb;</dt>
-                <dd>Move up in search results</dd>
-                <dt>&rarrb;</dt>
-                <dd>Move down in search results</dd>
-                <dt>&#9166;</dt>
-                <dd>Go to active search result</dd>
-            </dl>
-        </div>
-        <div class="infos">
-            <h1>Search tricks</h1>
-            <p>
-                Prefix searches with a type followed by a colon (e.g.
-                <code>fn:</code>) to restrict the search to a given type.
-            </p>
-            <p>
-                Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code>, <code>enum</code>,
-                <code>trait</code>, <code>typedef</code> (or
-                <code>tdef</code>).
-            </p>
-        </div>
-    </div>
-
-    
-
-    <script>
-        window.rootPath = "../../";
-        window.currentCrate = "psutil";
-        window.playgroundUrl = "";
-    </script>
-    <script src="../../jquery.js"></script>
-    <script src="../../main.js"></script>
-    
-    <script async src="../../search-index.js"></script>
-</body>
-</html>
+</div><h4 id='method.cmdline' class="method"><span id='cmdline.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.cmdline' class='fnname'>cmdline</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#507-509' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Return the result of <code>cmdline_vec</code> as a String.</p>
+</div><h4 id='method.cwd' class="method"><span id='cwd.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.cwd' class='fnname'>cwd</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html" title="struct std::path::PathBuf">PathBuf</a>&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#512-514' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Read the path of the process' current working directory.</p>
+</div><h4 id='method.exe' class="method"><span id='exe.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.exe' class='fnname'>exe</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html" title="struct std::path::PathBuf">PathBuf</a>&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#517-519' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Read the absolute path of the process</p>
+</div><h4 id='method.environ' class="method"><span id='environ.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.environ' class='fnname'>environ</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html" title="struct std::collections::hash::map::HashMap">HashMap</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#535-539' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><h4 id='method.memory' class="method"><span id='memory.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.memory' class='fnname'>memory</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="../../psutil/process/struct.Memory.html" title="struct psutil::process::Memory">Memory</a>&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#542-544' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Reads <code>/proc/[pid]/statm</code> into a struct.</p>
+</div><h4 id='method.open_fds' class="method"><span id='open_fds.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.open_fds' class='fnname'>open_fds</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../psutil/process/struct.Fd.html" title="struct psutil::process::Fd">Fd</a>&gt;&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#547-561' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Reads <code>/proc/[pid]/fd</code> directory</p>
+</div><h4 id='method.kill' class="method"><span id='kill.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.kill' class='fnname'>kill</a>(&amp;self) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#564-570' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Send SIGKILL to the process.</p>
+</div></div>
+                <h2 id='implementations' class='small-section-header'>
+                  Trait Implementations<a href='#implementations' class='anchor'></a>
+                </h2>
+                <div id='implementations-list'><h3 id='impl-Clone' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../psutil/process/struct.Process.html" title="struct psutil::process::Process">Process</a></code><a href='#impl-Clone' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#212' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../psutil/process/struct.Process.html" title="struct psutil::process::Process">Process</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#212' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</code></span></td><td><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#130-132' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 id='impl-Debug' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../../psutil/process/struct.Process.html" title="struct psutil::process::Process">Process</a></code><a href='#impl-Debug' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#212' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#212' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Formats the value using the given formatter. <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt">Read more</a></p>
+</div></div><h3 id='impl-PartialEq' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="struct" href="../../psutil/process/struct.Process.html" title="struct psutil::process::Process">Process</a></code><a href='#impl-PartialEq' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#573-578' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, other: &amp;<a class="struct" href="../../psutil/process/struct.Process.html" title="struct psutil::process::Process">Process</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/psutil/process.rs.html#575-577' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, other: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Rhs) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/cmp.rs.html#123' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div></div>
+                <h2 id='synthetic-implementations' class='small-section-header'>
+                  Auto Trait Implementations<a href='#synthetic-implementations' class='anchor'></a>
+                </h2>
+                <div id='synthetic-implementations-list'>
+            <h3 id='impl-Send' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> for <a class="struct" href="../../psutil/process/struct.Process.html" title="struct psutil::process::Process">Process</a></code><a href='#impl-Send' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div><h3 id='impl-Sync' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> for <a class="struct" href="../../psutil/process/struct.Process.html" title="struct psutil::process::Process">Process</a></code><a href='#impl-Sync' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div></div></section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "psutil";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

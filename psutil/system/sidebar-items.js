@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["uptime","Returns the system uptime in seconds"]]});
+initSidebarItems({"fn":[["loadavg","Returns the system load average"],["swap_memory","Returns information about swap memory usage"],["uptime","Returns the system uptime in seconds."],["virtual_memory","Returns information about virtual memory usage"]],"struct":[["LoadAverage",""],["SwapMemory",""],["VirtualMemory",""]]});
