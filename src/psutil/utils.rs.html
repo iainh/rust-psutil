@@ -23,6 +23,8 @@
 <span id="23">23</span>
 <span id="24">24</span>
 <span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! Utility methods, mostly for dealing with IO.</span>
 
@@ -44,8 +46,10 @@
     (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">from_str</span>:<span class="ident">path</span>) <span class="op">=&gt;</span> {
         <span class="macro">try</span><span class="macro">!</span>(<span class="kw">match</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">from_str</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>) {
             <span class="prelude-val">Ok</span>(<span class="ident">result</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">result</span>),
-            <span class="prelude-val">Err</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">Error</span>::<span class="ident">new</span>(<span class="ident">ErrorKind</span>::<span class="ident">InvalidInput</span>,
-                <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;Could not parse {:?}&quot;</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>)))
+            <span class="prelude-val">Err</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">Error</span>::<span class="ident">new</span>(
+                <span class="ident">ErrorKind</span>::<span class="ident">InvalidInput</span>,
+                <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;Could not parse {:?}&quot;</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">field</span>)
+            )),
         })
     };
 }

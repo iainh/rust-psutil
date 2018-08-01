@@ -337,21 +337,14 @@
 <span id="337">337</span>
 <span id="338">338</span>
 <span id="339">339</span>
-<span id="340">340</span>
-<span id="341">341</span>
-<span id="342">342</span>
-<span id="343">343</span>
-<span id="344">344</span>
-<span id="345">345</span>
-<span id="346">346</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! Read information about the operating system from `/proc`.</span>
 
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">str</span>::<span class="ident">FromStr</span>;
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">path</span>::<span class="ident">Path</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">collections</span>::<span class="ident">HashMap</span>;
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">path</span>::<span class="ident">Path</span>;
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">str</span>::<span class="ident">FromStr</span>;
 
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>::{<span class="prelude-ty">Result</span>, <span class="ident">ErrorKind</span>, <span class="ident">Error</span>};
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>::{<span class="ident">Error</span>, <span class="ident">ErrorKind</span>, <span class="prelude-ty">Result</span>};
 
 <span class="kw">use</span> <span class="ident">PID</span>;
 
@@ -614,22 +607,15 @@
 
     <span class="comment">// MemAvailable was introduced in kernel 3.14. The original psutil computes it if it&#39;s not</span>
     <span class="comment">// found, but since 3.14 has already reached EOL, let&#39;s assume that it&#39;s there.</span>
-    <span class="kw">let</span> <span class="ident">available</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">mem_info</span>.<span class="ident">get</span>(<span class="string">&quot;MemAvailable:&quot;</span>).<span class="ident">ok_or</span>(
-        <span class="ident">not_found</span>(<span class="string">&quot;MemAvailable&quot;</span>),
-    )<span class="question-mark">?</span>;
+    <span class="kw">let</span> <span class="ident">available</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">mem_info</span>
+        .<span class="ident">get</span>(<span class="string">&quot;MemAvailable:&quot;</span>)
+        .<span class="ident">ok_or</span>(<span class="ident">not_found</span>(<span class="string">&quot;MemAvailable&quot;</span>))<span class="question-mark">?</span>;
 
     <span class="comment">// Shmem was introduced in 2.6.19</span>
     <span class="kw">let</span> <span class="ident">shared</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">mem_info</span>.<span class="ident">get</span>(<span class="string">&quot;Shmem:&quot;</span>).<span class="ident">ok_or</span>(<span class="ident">not_found</span>(<span class="string">&quot;Shmem&quot;</span>))<span class="question-mark">?</span>;
 
     <span class="prelude-val">Ok</span>(<span class="ident">VirtualMemory</span>::<span class="ident">new</span>(
-        <span class="ident">total</span>,
-        <span class="ident">available</span>,
-        <span class="ident">shared</span>,
-        <span class="ident">free</span>,
-        <span class="ident">buffers</span>,
-        <span class="ident">cached</span>,
-        <span class="ident">active</span>,
-        <span class="ident">inactive</span>,
+        <span class="ident">total</span>, <span class="ident">available</span>, <span class="ident">shared</span>, <span class="ident">free</span>, <span class="ident">buffers</span>, <span class="ident">cached</span>, <span class="ident">active</span>, <span class="ident">inactive</span>,
     ))
 }
 
