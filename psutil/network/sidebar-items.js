@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["NetIOCounters","Struct that contains information about networks"],["NetIOCountersCollector","Net counter struct to use nowrap mode"]]});
