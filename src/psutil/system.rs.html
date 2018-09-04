@@ -828,14 +828,21 @@
 <span id="828">828</span>
 <span id="829">829</span>
 <span id="830">830</span>
+<span id="831">831</span>
+<span id="832">832</span>
+<span id="833">833</span>
+<span id="834">834</span>
+<span id="835">835</span>
+<span id="836">836</span>
+<span id="837">837</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! Read information about the operating system from `/proc`.</span>
 
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">collections</span>::<span class="ident">HashMap</span>;
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>::{<span class="ident">Error</span>, <span class="ident">ErrorKind</span>, <span class="prelude-ty">Result</span>};
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">path</span>::<span class="ident">Path</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">str</span>::<span class="ident">FromStr</span>;
 <span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">thread</span>, <span class="ident">time</span>};
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>::{<span class="ident">Error</span>, <span class="ident">ErrorKind</span>, <span class="prelude-ty">Result</span>};
 
 <span class="kw">use</span> <span class="ident">PID</span>;
 
@@ -897,7 +904,7 @@
             <span class="ident">active</span>,
             <span class="ident">inactive</span>,
             <span class="ident">used</span>,
-            <span class="ident">percent</span>: (<span class="ident">used</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">/</span> <span class="ident">total</span> <span class="kw">as</span> <span class="ident">f32</span>) <span class="op">*</span> <span class="number">100.0</span>,
+            <span class="ident">percent</span>: (<span class="ident">total</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">-</span> <span class="ident">available</span> <span class="kw">as</span> <span class="ident">f32</span>) <span class="op">/</span> <span class="ident">total</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="number">100.</span>,
         }
     }
 }
@@ -1379,7 +1386,14 @@
     <span class="kw">let</span> <span class="ident">buffers</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">mem_info</span>
         .<span class="ident">get</span>(<span class="string">&quot;Buffers:&quot;</span>)
         .<span class="ident">ok_or_else</span>(<span class="op">||</span> <span class="ident">not_found</span>(<span class="string">&quot;Buffers&quot;</span>))<span class="question-mark">?</span>;
-    <span class="kw">let</span> <span class="ident">cached</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">mem_info</span>.<span class="ident">get</span>(<span class="string">&quot;Cached:&quot;</span>).<span class="ident">ok_or_else</span>(<span class="op">||</span> <span class="ident">not_found</span>(<span class="string">&quot;Cached&quot;</span>))<span class="question-mark">?</span>;
+    <span class="kw">let</span> <span class="ident">cached</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">mem_info</span>.<span class="ident">get</span>(<span class="string">&quot;Cached:&quot;</span>).<span class="ident">ok_or_else</span>(<span class="op">||</span> <span class="ident">not_found</span>(<span class="string">&quot;Cached&quot;</span>))<span class="question-mark">?</span>
+        <span class="comment">// &quot;free&quot; cmdline utility sums reclaimable to cached.</span>
+        <span class="comment">// Older versions of procps used to add slab memory instead.</span>
+        <span class="comment">// This got changed in:</span>
+        <span class="comment">//  https://gitlab.com/procps-ng/procps/commit/05d751c4f076a2f0118b914c5e51cfbb4762ad8e</span>
+        <span class="op">+</span> <span class="kw-2">*</span><span class="ident">mem_info</span>
+            .<span class="ident">get</span>(<span class="string">&quot;SReclaimable:&quot;</span>)
+            .<span class="ident">ok_or_else</span>(<span class="op">||</span> <span class="ident">not_found</span>(<span class="string">&quot;SReclaimable&quot;</span>))<span class="question-mark">?</span>; <span class="comment">// since kernel 2.6.19</span>
     <span class="kw">let</span> <span class="ident">active</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">mem_info</span>.<span class="ident">get</span>(<span class="string">&quot;Active:&quot;</span>).<span class="ident">ok_or_else</span>(<span class="op">||</span> <span class="ident">not_found</span>(<span class="string">&quot;Active&quot;</span>))<span class="question-mark">?</span>;
     <span class="kw">let</span> <span class="ident">inactive</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">mem_info</span>
         .<span class="ident">get</span>(<span class="string">&quot;Inactive:&quot;</span>)
